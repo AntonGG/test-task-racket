@@ -1,11 +1,11 @@
-import React, { FC, memo, useEffect, useState } from "react";
-import ReactPaginate from "react-paginate";
+import React, { memo, useEffect, useState } from "react";
 import { PanelPost } from "../../types/PanelPost";
 import { PanelProps } from "../../types/PanelProps";
 import Paginate from "../paginate/Paginate";
 import Posts from "../posts/Posts";
 import Search from "../search/Search";
 import { PanelContainer } from "./styles";
+
 const recursiveFind = (object: Object, text: string): boolean => {
   return Object.values(object).some((value) => {
     if (value.toString().indexOf(text) > -1) {

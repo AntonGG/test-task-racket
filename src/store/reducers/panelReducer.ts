@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, AnyAction } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getPostsFetch } from "../../services/post";
 import { getUsersFetch } from "../../services/user";
 import { PanelPost } from "../../types/PanelPost";
@@ -26,8 +26,6 @@ const panelReducer = createSlice({
   },
 });
 
-const { actions, reducer } = panelReducer;
-
-export const {} = actions;
+const { reducer } = panelReducer;
 
 export default reducer;

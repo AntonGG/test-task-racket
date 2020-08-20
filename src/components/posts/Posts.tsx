@@ -4,7 +4,6 @@ import Post from "../post/Post";
 import {
   PostsItem,
   PostsContainer,
-  LineWrap,
   PostsTitle,
   PostsTitleName,
 } from "./styles";
@@ -18,20 +17,18 @@ const Posts = memo<PanelProps>((props) => {
     <PostsContainer>
       {isOpenPost && <Post close={closePost} panelPost={currentPost} />}
       {props.panelPosts.map((v, i) => (
-        <>
-          <PostsItem
-            onClick={() => {
-              setCurrentPost(v);
-              setIsOpenPost(true);
-            }}
-          >
-            <PostsTitle>Имя</PostsTitle>
-            <PostsTitleName>{v.user?.name}</PostsTitleName>
-            <PostsTitle>Ник</PostsTitle>
-            <PostsTitleName>{v.user?.username}</PostsTitleName>
-          </PostsItem>
-          {i % 4 === 0 && <LineWrap />}
-        </>
+        <PostsItem
+          key={i}
+          onClick={() => {
+            setCurrentPost(v);
+            setIsOpenPost(true);
+          }}
+        >
+          <PostsTitle>Имя</PostsTitle>
+          <PostsTitleName>{v.user?.name}</PostsTitleName>
+          <PostsTitle>Ник</PostsTitle>
+          <PostsTitleName>{v.user?.username}</PostsTitleName>
+        </PostsItem>
       ))}
     </PostsContainer>
   );

@@ -2,9 +2,8 @@ import React, { memo } from "react";
 import ReactPaginate from "react-paginate";
 import { PaginateProps } from "../../types/PaginateProps";
 import { PaginateContainer, ReactPaginateStyled, SelectPages } from "./styles";
-const Paginate = memo<PaginateProps>((props) => {
-  console.log("pages, page", props.pages, props.page);
 
+const Paginate = memo<PaginateProps>((props) => {
   return (
     <PaginateContainer>
       <ReactPaginateStyled />
@@ -30,7 +29,7 @@ const Paginate = memo<PaginateProps>((props) => {
         }}
       >
         {[5, 10, 20, 30, 40, 50].map((v) => (
-          <option>{v}</option>
+          <option key={v}>{v}</option>
         ))}
       </SelectPages>
     </PaginateContainer>

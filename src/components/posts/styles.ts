@@ -26,7 +26,3 @@ export const PostsTitle = styled.p`
 export const PostsTitleName = styled.p`
   margin-top: 5px;
 `;
-export const LineWrap = styled.div`
-  display: flex;
-  flex-wrap: wrap-reverse;
-`;

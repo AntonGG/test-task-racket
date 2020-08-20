@@ -24,7 +24,7 @@ const App = () => {
 
   useEffect(() => {
     getPanelPosts();
-  }, []);
+  }, [getPanelPosts]);
 
   return (
     <Container className="App">

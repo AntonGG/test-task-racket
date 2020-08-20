@@ -30,8 +30,6 @@ const appReducer = createSlice({
   },
 });
 
-const { actions, reducer } = appReducer;
-
-export const {} = actions;
+const { reducer } = appReducer;
 
 export default reducer;

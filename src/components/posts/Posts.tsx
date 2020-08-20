@@ -1,16 +1,34 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import { PanelProps } from "../../types/PanelProps";
-import { PostsItem, PostsContainer, LineWrap, PostsTitle } from "./styles";
+import Post from "../post/Post";
+import {
+  PostsItem,
+  PostsContainer,
+  LineWrap,
+  PostsTitle,
+  PostsTitleName,
+} from "./styles";
 const Posts = memo<PanelProps>((props) => {
+  const [currentPost, setCurrentPost] = useState(props.panelPosts[0]);
+  const [isOpenPost, setIsOpenPost] = useState(false);
+  const closePost = () => {
+    setIsOpenPost(false);
+  };
   return (
     <PostsContainer>
+      {isOpenPost && <Post close={closePost} panelPost={currentPost} />}
       {props.panelPosts.map((v, i) => (
         <>
-          <PostsItem>
+          <PostsItem
+            onClick={() => {
+              setCurrentPost(v);
+              setIsOpenPost(true);
+            }}
+          >
             <PostsTitle>Имя</PostsTitle>
-            <p>{v.user?.name}</p>
+            <PostsTitleName>{v.user?.name}</PostsTitleName>
             <PostsTitle>Ник</PostsTitle>
-            <p>{v.user?.username}</p>
+            <PostsTitleName>{v.user?.username}</PostsTitleName>
           </PostsItem>
           {i % 4 === 0 && <LineWrap />}
         </>

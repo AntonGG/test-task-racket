@@ -46,18 +46,24 @@ const Panel = memo<PanelProps>((props) => {
   };
 
   useEffect(() => {
+    setPage(0);
+  }, [countPosts]);
+
+  useEffect(() => {
     const searchedPosts = searchPosts(props.panelPosts, searchText);
     const pages = Math.floor(searchedPosts.length / countPosts);
-    setPages(pages);
+    setPages(pages > 0 ? pages : 1);
 
     if (page === 0) {
       setResultPosts(searchedPosts.slice(0, countPosts));
     } else if (page > 0) {
-      setResultPosts(
-        searchedPosts.slice(page * countPosts, page * countPosts + countPosts)
+      const res = searchedPosts.slice(
+        page * countPosts,
+        page * countPosts + countPosts
       );
+      setResultPosts(res);
     }
-  }, [page, searchText, countPosts, props]);
+  }, [page, searchText, props, countPosts]);
 
   return (
     <PanelContainer>

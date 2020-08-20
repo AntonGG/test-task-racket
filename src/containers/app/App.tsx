@@ -1,17 +1,20 @@
 import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Panel from "../../components/panel/Panel";
+import Preloader from "../../components/preloader/Preloader";
 import { RootState } from "../../store/reducers";
 import { getData } from "../../store/reducers/panelReducer";
 import { PanelPost } from "../../types/PanelPost";
-import { Container } from "./styles";
+import { Container, Title, GlobalStyle } from "./styles";
 
 const App = () => {
   const dispatch = useDispatch();
   const posts = useSelector<RootState, PanelPost[]>(
     (state) => state.PanelReducer.panelPosts
   );
-
+  const isLoading = useSelector<RootState, boolean>(
+    (state) => state.App.isLoading
+  );
   const getPanelPosts = useCallback(() => {
     const onGetData = () => {
       dispatch(getData());
@@ -25,8 +28,9 @@ const App = () => {
 
   return (
     <Container className="App">
-      <p>Тестовое задание</p>
-      <Panel panelPosts={posts} />
+      <GlobalStyle />
+      <Title>Тестовое задание</Title>
+      {isLoading ? <Preloader /> : <Panel panelPosts={posts} />}
     </Container>
   );
 };

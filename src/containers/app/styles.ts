@@ -1,4 +1,11 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+
+export const GlobalStyle = createGlobalStyle`
+  * {
+      font-family: 'Open Sans', sans-serif !important;
+      outline:none;
+    }
+`;
 
 export const Container = styled.div`
   display: flex;
@@ -6,4 +13,8 @@ export const Container = styled.div`
   align-items: center;
   flex-direction: column;
   width: 100%;
+`;
+
+export const Title = styled.p`
+  margin-bottom: 0;
 `;

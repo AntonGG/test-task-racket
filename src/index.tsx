@@ -4,7 +4,6 @@ import App from "./containers/app/App";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import store from "./store/store";
-import { createGlobalStyle } from "styled-components";
 
 ReactDOM.render(
   <Provider store={store}>

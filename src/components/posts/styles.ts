@@ -10,6 +10,7 @@ export const PostsContainer = styled.div`
 export const PostsItem = styled.div`
   width: 190px;
   display: flex;
+  cursor: pointer;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -17,6 +18,9 @@ export const PostsItem = styled.div`
   border: 1px solid #ededed;
   box-sizing: border-box;
   border-radius: 4px;
+  &:hover {
+    background: #dadada;
+  }
 `;
 export const PostsTitle = styled.p`
   color: #9a9797;
